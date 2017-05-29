@@ -1,8 +1,3 @@
-<#
-as admin:
-Register-PSRepository -Name DockerPS-Dev -SourceLocation https://ci.appveyor.com/nuget/docker-powershell-dev
-Install-Module Docker -Repository DockerPS-Dev
-#>
 Import-Module Docker
 Clear-Host
 
