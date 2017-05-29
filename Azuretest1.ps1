@@ -26,4 +26,5 @@ docker build -t nginx-nanoserver .
 docker run -d --name nginx -p 80:80 nginx-nanoserver
 docker run -d --name nano -p 81:80 nanoserver/iis
 Enter-PSSession -ContainerId (Get-Container -Name nginx).ID -RunAsAdministrator
+test
 #> 
