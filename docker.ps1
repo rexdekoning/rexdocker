@@ -13,7 +13,7 @@ if ((Test-Path -Path c:\containerlogs) -eq $false) {
     Write-Verbose -Message 'Folder containerlogs already exists' -Verbose
 }
 
-Write-Verbose -Message 'Starting container nano' -Verbose
+Write-Verbose -Message 'Starting container nano' -Verbose 
 
 $hostConfig = [Docker.DotNet.Models.HostConfig]::new()
 ($hostConfig.Binds = [System.Collections.Generic.List[string]]::New()).Add('C:\ContainerLogs\:c:\logs\')
