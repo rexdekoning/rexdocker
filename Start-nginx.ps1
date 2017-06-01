@@ -16,7 +16,7 @@ function Start-Containers
 
     Write-Verbose -Message 'Starting Nodejs1 image' -Verbose
     Invoke-ContainerImage -ImageIdOrName webserver -Name nodejs1 -Detach -Terminal -Input
-    $ipaddress = docker inspect -f "{{ .NetworkSettings.Networks.nat.IPAddress }}" nodejs1
+    $ipaddress = (Get-ContainerDetail -ContainerIdOrName Nodejs1).NetworkSettings.Networks.nat.IPAddress
     $server = $ConfigString.Replace("[servername]", "nodejs1.foorbar.net")
     Write-Verbose -Message "IPAddress node1" -Verbose
     $ipaddress
@@ -25,7 +25,7 @@ function Start-Containers
     
     Write-Verbose -Message 'Starting Nodejs2 image' -Verbose
     Invoke-ContainerImage -ImageIdOrName webserver -Name nodejs2 -Detach -Terminal -Input
-    $ipaddress = docker inspect -f "{{ .NetworkSettings.Networks.nat.IPAddress }}" nodejs2
+    $ipaddress = (Get-ContainerDetail -ContainerIdOrName nodejs2).NetworkSettings.Networks.nat.IPAddress
     $server = $ConfigString.Replace("[servername]", "nodejs2.foorbar.net")
     Write-Verbose -Message "IPAddress node2" -Verbose
     $ipaddress
@@ -44,7 +44,7 @@ function Start-Containers
 
     Write-Verbose -Message 'Starting NGINX image' -Verbose
     Invoke-ContainerImage -ImageIdOrName nginx-nanoserver -Configuration $config -Name nginx -Detach -Terminal -Input -HostConfiguration $hostConfig
-    $ipaddress = docker inspect -f "{{ .NetworkSettings.Networks.nat.IPAddress }}" nginx
+    $ipaddress = (Get-ContainerDetail -ContainerIdOrName nginx).NetworkSettings.Networks.nat.IPAddress
     Write-Verbose -Message "IPAddress nginx" -Verbose
     $ipaddress
 }
@@ -67,7 +67,7 @@ function Stop-Containers
 
 function Build-Webserver
 {
-    New-ContainerImage -Path 'C:\Users\rexde\source\repos\rexdocker\docker\Webserver\Dockerfile'
+    New-ContainerImage -Path 'C:\Users\rexde\source\repos\rexdocker\docker\Webserver\Dockerfile' -Repository Webserver2
 }
 
 Start-Containers
