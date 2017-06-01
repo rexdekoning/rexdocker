@@ -65,6 +65,11 @@ function Stop-Containers
     Remove-Item -Path C:\ContainerLogs\nginx\conf\nodejs2.conf
 }
 
+function Build-Webserver
+{
+    New-ContainerImage -Path 'C:\Users\rexde\source\repos\rexdocker\docker\Webserver\Dockerfile'
+}
+
 Start-Containers
 <#
 Enter-AdminSession 'nodejs1'
