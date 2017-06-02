@@ -34,7 +34,7 @@ function Get-VMStatus($ResourceGroupName, $VMName)
         }
         $strReturn = $VMStatusDetail
         return $strReturn
-}
+} 
 
 Start-VM -Name rdkcont01
 Start-AzureRmVM -ResourceGroupName rsgrdkcont -Name rdkcont01
