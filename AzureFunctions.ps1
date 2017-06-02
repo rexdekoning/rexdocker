@@ -55,5 +55,5 @@ Get-AzureRMNetworkSecurityGroup -Name rdkcont01-nsg -ResourceGroupName rsgrdkcon
 #del config rule
 Get-AzureRmNetworkSecurityGroup -Name rdkcont01-nsg -ResourceGroupName rsgrdkcont | Remove-AzureRmNetworkSecurityRuleConfig -Name "Testrex" | Set-AzureRmNetworkSecurityGroup
 
-
+#test
  
